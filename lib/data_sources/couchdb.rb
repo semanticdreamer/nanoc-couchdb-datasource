@@ -100,12 +100,13 @@ module Nanoc::DataSources
           docs['rows'].enum_with_index.map do |row, i|
                                 
             content = row['value'][content_field]
-            # attributes = {
-            #   :title       => row['value'][title_field],
-            #   :filename    => row['value'][name_field]
-            # }
-            attributes = row['value']
-            identifier = sanitize_to_filename("#{row['value']['_id']}")
+            attributes = {
+              :title       => row['value'][title_field],
+              :filename    => row['value'][name_field]
+            }
+            # attributes = row['value']
+            # identifier = sanitize_to_filename("#{row['value']['_id']}")
+            identifier = sanitize_to_filename("#{row['value'][name_field]}")
             mtime = nil
       
             # Build item
