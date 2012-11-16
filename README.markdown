@@ -28,7 +28,7 @@ A `Nanoc::DataSource` for loading site data items from a [CouchDB][couchdb] serv
 
 ## Usage
 
-Copy the file `lib/data_sources/couchdb.rb` into your site's `lib` folder, e.g. `lib/data_sources/`.
+Copy the file `lib/data_sources/couchdb.rb` into your site's `lib` folder.
 
 ## Configuration
 
