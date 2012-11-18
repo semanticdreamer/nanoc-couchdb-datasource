@@ -104,7 +104,6 @@ module Nanoc::DataSources
             content = raw_item[content_field]
             default_attributes = { :title => raw_item[title_field]}
             raw_item.merge(default_attributes)
-            puts raw_item
             attributes = raw_item
             identifier = sanitize_to_filename("#{raw_item['_id']}")
             mtime = nil
