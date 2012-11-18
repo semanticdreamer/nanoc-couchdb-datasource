@@ -46,9 +46,7 @@ Example configuration for section `data_sources` in site's `config.yaml`:
           # Mapping of CouchDB document field names to nanoc item attributes.
           fields:
             item_title: 'title'
-            item_name: 'name'
             item_content: 'body'
-            item_type: 'type'
           # Views used for querying the CouchDB documents.
           views:
             all_items:
