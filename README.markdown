@@ -20,15 +20,15 @@ A `Nanoc::DataSource` for loading site data items from a [CouchDB][couchdb] serv
 
   - Views used for querying the CouchDB documents.
 
-##  Dependencies
+##  RubyGems Dependencies
 
 - [CouchRest][couchrest], a RESTful CouchDB client based on Heroku's RestClient and Couch.js:
   
-  `sudo gem install couchrest`
+    `sudo gem install couchrest`
 
 ## Usage
 
-Copy the file `lib/data_sources/couchdb.rb` into your site's `lib` folder.
+Copy the file `lib/couchdb.rb` into your site's `lib` folder.
 
 ## Configuration
 

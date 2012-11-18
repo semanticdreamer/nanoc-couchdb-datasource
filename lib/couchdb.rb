@@ -58,7 +58,7 @@ module Nanoc::DataSources
       
           require 'rubygems'
           require 'couchrest'
-      
+
           # Check configuration
           if self.config[:couch].nil?
             raise RuntimeError, "CouchDB data source requires a server url in the data source configuration."
@@ -69,9 +69,7 @@ module Nanoc::DataSources
       
           # Get field names
           title_field = self.config[:fields][:item_title] || 'title'
-          name_field = self.config[:fields][:item_name] || 'name'
           content_field = self.config[:fields][:item_content] || 'body'
-          type_field = self.config[:fields][:item_type] || 'type'
           
           # Get views (map/ reduce)
           all_items_map = self.config[:views][:all_items][:map] || 'function(doc) {emit(doc._id, doc);}'
@@ -93,20 +91,19 @@ module Nanoc::DataSources
             }
           })
           
+          # Get data
           #docs = db.all_docs({'include_docs' => true})
-          docs = @db.view('nanoc/items', {})
-                  
+          raw_data = @db.view('nanoc/items', {})
+
           # Convert to items
-          docs['rows'].enum_with_index.map do |row, i|
-                                
-            content = row['value'][content_field]
-            attributes = {
-              :title       => row['value'][title_field],
-              :filename    => row['value'][name_field]
-            }
-            # attributes = row['value']
-            # identifier = sanitize_to_filename("#{row['value']['_id']}")
-            identifier = sanitize_to_filename("#{row['value'][name_field]}")
+          raw_items = raw_data['rows']
+          raw_items.each_with_index.map do |raw_item, i|
+
+            raw_item = raw_item['value']
+
+            content = raw_item[content_field]
+            attributes = raw_item
+            identifier = sanitize_to_filename("#{raw_item['_id']}")
             mtime = nil
       
             # Build item
