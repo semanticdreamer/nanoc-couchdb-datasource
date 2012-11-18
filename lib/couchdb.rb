@@ -105,7 +105,7 @@ module Nanoc::DataSources
             default_attributes = { :title => raw_item[title_field]}
             raw_item.merge(default_attributes)
             attributes = raw_item
-            identifier = sanitize_to_filename("#{raw_item['_id']}")
+            identifier = raw_item['identifier'] || sanitize_to_filename("#{raw_item['_id']}")
             mtime = nil
       
             # Build item
@@ -114,7 +114,7 @@ module Nanoc::DataSources
         end
       end
 
-      # make document title safe for a filesystem
+      # make identifier safe for a filesystem
       def sanitize_to_filename(doc_title)
         doc_title.gsub(/[^\w\s_-]+/, '').
           gsub(/(^|\b\s)\s+($|\s?\b)/, '\\1\\2').

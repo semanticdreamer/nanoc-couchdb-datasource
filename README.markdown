@@ -16,7 +16,9 @@ A `Nanoc::DataSource` for loading site data items from a [CouchDB][couchdb] serv
 
   - The CouchDB database name.
 
-  - Mapping of CouchDB document field names to nanoc item attributes:
+  - Mapping of CouchDB document field names to default nanoc item attributes: `title`, `body`
+
+  - Allow for custom nanoc identifier by providing document field `identifier`, defaults to document `_id`. 
 
   - Views used for querying the CouchDB documents.
 
