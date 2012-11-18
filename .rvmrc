@@ -1,0 +1,2 @@
+#use ruby version, assure gemset exists
+rvm --create use ruby-1.9.3-p327@nanoc-couchdb-datasource > /dev/null
